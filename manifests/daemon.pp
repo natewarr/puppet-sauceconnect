@@ -1,5 +1,10 @@
-class sauceconnect::daemon($username, $apikey) {
+class sauceconnect::daemon($username, $apikey, $sharedtunnel = false ) {
   $logdir = '/var/log/sauce'
+
+  $switches = $sharedtunnel ? {
+    true    => '--shared-tunnel',
+    default => '',
+  }
 
   file {
     $logdir :
@@ -9,6 +14,7 @@ class sauceconnect::daemon($username, $apikey) {
       ensure  => present,
       content => "
 SAUCE_CONNECT=/usr/share/sauce/sc
+SWITCHES=${switches}
 API_USER=${username}
 API_KEY=${apikey}
 USERNAME=

@@ -31,7 +31,7 @@ DAEMON=""
 
 READY_FILE=$LOG_DIR/ready_$$
 DAEMON="$SAUCE_CONNECT"
-DAEMON_ARGS="--logfile $LOG_FILE --readyfile $READY_FILE -u $API_USER -k $API_KEY"
+DAEMON_ARGS="--logfile $LOG_FILE --readyfile $READY_FILE -u $API_USER -k $API_KEY $SWITCHES"
 
 # Exit if the package is not installed
 [ -x "$DAEMON" ] || exit 0

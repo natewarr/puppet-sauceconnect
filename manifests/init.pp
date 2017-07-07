@@ -11,7 +11,7 @@ class sauceconnect($username="", $apikey="", $sharedtunnel = true ) {
       source  => 'puppet:///modules/sauceconnect/sc';
   }
   
-  $lower_osfamily = downcase(${osfamily})
+  $lower_osfamily = downcase($osfamily)
 
   class {
     "sauceconnect::${lower_osfamily}" : ;
